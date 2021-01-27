@@ -67,3 +67,34 @@ a:hover {
 footer {
     margin-bottom: 0;
 }
+
+/* form */
+label {
+    display: block;
+}
+
+.form-check label {
+    display: initial;
+}
+
+input[type="text"],
+textarea {
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
