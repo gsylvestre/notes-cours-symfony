@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\LessonCard;
+use App\Repository\LessonCardRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,13 +13,19 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="main_home")
      */
-    public function home()
+    public function home(LessonCardRepository $lessonCardRepository)
     {
-        return $this->render('main/home.html.twig', []);
+        $cards = $lessonCardRepository->findBy(["isDraft" => false, "name" => "Twig"], ["dateCreated" => "DESC"], 200);
+
+        return $this->render('main/home.html.twig', [
+            "cards" => $cards
+        ]);
     }
 
     /**
      * @Route("/test", name="main_test")
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function test(EntityManagerInterface $entityManager)
     {
