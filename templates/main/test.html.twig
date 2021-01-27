@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+ {{ username }}
+ {{ product }}
+<h1>coucou depuis twig</h1>
+<p>fdjaskf asdlfj dl fka</p>
+{#
+un commentaire
+multiligne
+ #}
+
+{# crée une variable contenant une chaîne #}
+{% set product = "computer" %}
+{# crée une variable contenant un array #}
+{% set colors = ["brown", "pink", "yellow"] %}
+{# crée un objet #}
+{% set movie = {
+ "title": "Forrest Gump",
+ "year": 1990
+} %}
+
+{# affiche la variable #}
+{{ product }}
+
+{# boucle sur tableau #}
+{% for c in colors %}
+ <div>{{ loop.index }}  {{ c }}</div>
+{% endfor %}
+
+{# boucle sur un objet #}
+{% for key, val in movie %}
+ <div>{{ key }} : {{ val }}</div>
+{% endfor %}
+
+{# conditions #}
+{% if colors|length > 3 %}
+ <div>Plus que trois couleurs</div>
+{% elseif colors|length < 0 %}
+ <div>euhhh</div>
+{% else %}
+  <div>3 ou moins !</div>
+{% endif %}
+
+<div>{{ "+ 2 weeks"|date("d/m/Y") }}</div>
+
+{% endblock %}

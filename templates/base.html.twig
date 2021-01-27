@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Notes de cours | Symfony{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <link rel="icon" href="{{ asset('img/favicon.png') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a class="main-logo" href="{{ path('main_home') }}"><img src="{{ asset('img/symfony_black_02.png') }}" alt="Logo Symfony"> :: Notes de cours</a>
+            <nav class="top-nav">
+                <a href="{{ path('main_home') }}">Accueil</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+        {% block body %}{% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; moi {{ "now"|date("Y") }}
+        </div>
+    </footer>
+</body>
+</html>
