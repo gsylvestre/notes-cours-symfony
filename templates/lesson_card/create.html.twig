@@ -6,9 +6,8 @@
         {{ form(card_form) }}
     </div>
 
-    <script>
-        var simplemde = new SimpleMDE();
-    </script>
+    {# active l'éditeur de markdown sur les textareas. voir base.html.twig #}
+    <script>var simplemde = new SimpleMDE({showIcons: ["code"]});</script>
 {% endblock %}
 
 {% block title %}
