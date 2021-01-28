@@ -4,8 +4,11 @@ namespace App\Entity;
 
 use App\Repository\LessonCardRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @UniqueEntity(fields={"name"}, message="Cette fiche existe déjà !")
  * @ORM\Entity(repositoryClass=LessonCardRepository::class)
  */
 class LessonCard
@@ -18,16 +21,25 @@ class LessonCard
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Veuillez donner un titre à votre fiche!")
+     * @Assert\Length(
+     *     min=4,
+     *     max=40,
+     *     minMessage="Trop court! 4 caractères minimum!",
+     *     maxMessage="Trop long! 40 caractères maximum"
+     * )
      * @ORM\Column(type="string", length=40)
      */
     private $name;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="text")
      */
     private $content;
 
     /**
+     * @Assert\Type(type="boolean")
      * @ORM\Column(type="boolean")
      */
     private $isDraft;

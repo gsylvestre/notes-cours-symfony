@@ -82,9 +82,28 @@ textarea {
     margin-bottom: 15px;
 }
 
+.invalid-feedback {
+    color: tomato;
+    display: block;
+}
 
+.form-error-icon {
+    display: none;
+}
 
+.alert {
+    padding: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    border-radius: 5px;
+    background-color: #000;
+    color: #FFF;
+}
 
+.alert-success {
+    background-color: green;
+}
 
 
 

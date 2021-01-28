@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\LessonCard;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,6 +16,7 @@ class LessonCardType extends AbstractType
             ->add('name')
             ->add('content')
             ->add('isDraft')
+            ->add('submit', SubmitType::class)
         ;
     }
 
