@@ -20,9 +20,8 @@ class LessonCardType extends AbstractType
             ->add('tags', EntityType::class, [
                 'class' => Tag::class,
                 'choice_label' => 'name',
-                'mapped' => false,
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
             ])
             ->add('isDraft')
             ->add('submit', SubmitType::class)
