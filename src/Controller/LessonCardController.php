@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\LessonCardType;
+use App\Repository\LessonCardRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,7 +11,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class LessonCardController extends AbstractController
 {
     /**
-     * @Route("/lesson-card/create", name="lesson_card_create")
+     * @Route("/fiches/details/{id}", name="lesson_card_detail")
+     */
+    public function details(int $id, LessonCardRepository $lessonCardRepository): Response
+    {
+        $lessonCard = $lessonCardRepository->find($id);
+
+        return $this->render('lesson_card/details.html.twig', [
+            'lesson_card' => $lessonCard
+        ]);
+    }
+
+    /**
+     * @Route("/fiches/nouvelle", name="lesson_card_create")
      */
     public function create(): Response
     {

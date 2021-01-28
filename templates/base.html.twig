@@ -8,6 +8,15 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- prism.js pour la coloration syntaxique du code dans le navigateur -->
+    <link rel="stylesheet" href="{{ asset('prism/prism.css') }}">
+    <script src="{{ asset('prism/prism.js') }}"></script>
+
+    {# pour l'éditeur de markdown sur la page de création #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
@@ -18,6 +27,7 @@
             <a class="main-logo" href="{{ path('main_home') }}"><img src="{{ asset('img/symfony_black_02.png') }}" alt="Logo Symfony"> :: Notes de cours</a>
             <nav class="top-nav">
                 <a href="{{ path('main_home') }}">Accueil</a>
+                <a href="{{ path('lesson_card_create') }}">Nouvelle fiche</a>
             </nav>
         </div>
     </header>

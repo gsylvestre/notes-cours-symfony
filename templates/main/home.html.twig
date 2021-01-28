@@ -3,22 +3,11 @@
 {% block body %}
   <section class="cards-list">
 
-    <article>
-      <a href="#">Procédure d'installation</a>
-    </article>
-
-    <article>
-      <a href="#">Les commandes make utiles</a>
-    </article>
-
-    <article>
-      <a href="#">Composer</a>
-    </article>
-
-
-    <article>
-      <a href="#">Twig</a>
-    </article>
+    {% for lesson_card in cards %}
+      <article>
+        <a href="{{ path('lesson_card_detail', {id: lesson_card.id}) }}" title="Voir la fiche">{{ lesson_card.name }}</a>
+      </article>
+    {% endfor %}
 
   </section>
 {% endblock %}

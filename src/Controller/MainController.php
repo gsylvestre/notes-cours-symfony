@@ -15,7 +15,7 @@ class MainController extends AbstractController
      */
     public function home(LessonCardRepository $lessonCardRepository)
     {
-        $cards = $lessonCardRepository->findBy(["isDraft" => false, "name" => "Twig"], ["dateCreated" => "DESC"], 200);
+        $cards = $lessonCardRepository->findBy(["isDraft" => false], ["dateCreated" => "DESC"], 200);
 
         return $this->render('main/home.html.twig', [
             "cards" => $cards
