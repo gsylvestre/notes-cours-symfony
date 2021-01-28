@@ -3,6 +3,11 @@
 {% block body %}
     <h1>{{ lesson_card.name }}</h1>
     <div>
+        {% for tag in lesson_card.tags %}
+            <button>{{ tag.name }}</button>
+        {% endfor %}
+    </div>
+    <div>
         {#
             le contenu des fiches est en "markdown" en bdd... je le convertis en html ici
             les blocs de code sont affichés joliment grâce à prism.js (voir base.html.twig)

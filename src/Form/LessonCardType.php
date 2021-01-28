@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\LessonCard;
+use App\Entity\Tag;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,6 +17,13 @@ class LessonCardType extends AbstractType
         $builder
             ->add('name')
             ->add('content')
+            ->add('tags', EntityType::class, [
+                'class' => Tag::class,
+                'choice_label' => 'name',
+                'mapped' => false,
+                'multiple' => true,
+                'expanded' => true
+            ])
             ->add('isDraft')
             ->add('submit', SubmitType::class)
         ;
