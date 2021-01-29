@@ -1,6 +1,7 @@
 ### Instructions d'installation
 
 ```
+cd /wamp64/www/
 git clone https://github.com/gsylvestre/leboncoin-eni.git  
 cd leboncoin-eni  
 composer install
