@@ -5,10 +5,12 @@ html, body {
 }
 
 body {
-    background-color: honeydew;
+    background-color: black;
     font-family: 'Rubik', sans-serif;
-    background-image: url("../img/fabien-potencier.jpg");
-    background-size: 120px;
+    background-image: url("https://source.unsplash.com/1600x900/?space");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
     display: flex;
     flex-direction: column;
 }
