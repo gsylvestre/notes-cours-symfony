@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\LessonCard;
 use App\Form\LessonCardType;
+use App\Notification\Notifier;
 use App\Repository\LessonCardRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,7 +29,11 @@ class LessonCardController extends AbstractController
     /**
      * @Route("/fiches/nouvelle", name="lesson_card_create")
      */
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    public function create(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        Notifier $notifier
+    ): Response
     {
         //crée une instance de notre entité, qui sera éventuellement sauvegardée en bdd
         $lessonCard = new LessonCard();
@@ -50,6 +55,9 @@ class LessonCardController extends AbstractController
 
             //crée un message en session pour l'afficher sur la prochaine page
             $this->addFlash('success', 'Votre fiche a bien été créée !');
+
+            //envoie un mail à l'admin
+            $notifier->sendNewLessonCardNotificationToAdmin();
 
             //redirige vers une autre page
             return $this->redirectToRoute('lesson_card_detail', ['id' => $lessonCard->getId()]);
