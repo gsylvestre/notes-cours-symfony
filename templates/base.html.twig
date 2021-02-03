@@ -27,7 +27,14 @@
             <a class="main-logo" href="{{ path('main_home') }}"><img src="{{ asset('img/symfony_black_02.png') }}" alt="Logo Symfony"> :: Notes de cours</a>
             <nav class="top-nav">
                 <a href="{{ path('main_home') }}">Accueil</a>
-                <a href="{{ path('lesson_card_create') }}">Nouvelle fiche</a>
+
+                {% if app.user %}
+                    <a href="{{ path('lesson_card_create') }}">Nouvelle fiche</a>
+                    <a href="{{ path('app_logout') }}">Logout ({{ app.user.username }})</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}">Login</a>
+                    <a href="{{ path('app_register') }}">Create an account</a>
+                {% endif %}
             </nav>
         </div>
     </header>
