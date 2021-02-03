@@ -61,6 +61,11 @@ class LessonCard
      */
     private $tags;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $datePublished;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -151,6 +156,18 @@ class LessonCard
     public function removeTag(Tag $tag): self
     {
         $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    public function getDatePublished(): ?\DateTimeInterface
+    {
+        return $this->datePublished;
+    }
+
+    public function setDatePublished(?\DateTimeInterface $datePublished): self
+    {
+        $this->datePublished = $datePublished;
 
         return $this;
     }
